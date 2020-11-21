@@ -6,12 +6,12 @@ using System.Numerics;
 
 namespace LibreriaGenericos
 {
-    class RSA
+   public class CifradoRSA
     {
         public void Cifrado(string Original, string Destino, string Llaves)
         {
             //establecer rutas de archivos y buffer
-            string RutaDestino = Path.Combine(Destino, "Cifrado.txt");
+            string RutaDestino = Destino;
             FileStream LecturaOriginal = new FileStream(Original, FileMode.OpenOrCreate);
             using var Reader = new BinaryReader(LecturaOriginal);
             var buffer = new byte[2000000];
@@ -49,7 +49,7 @@ namespace LibreriaGenericos
         public void Descifrado(string Original, string Destino, string Llaves)
         {
             //establecer rutas de archivos y buffer
-            string RutaDestino = Path.Combine(Destino, "Descifrado.txt");
+            string RutaDestino = Destino;
             FileStream LecturaOriginal = new FileStream(Original, FileMode.OpenOrCreate);
             using var Reader = new BinaryReader(LecturaOriginal);
             var buffer = new byte[2000000];

@@ -6,9 +6,16 @@ using System.IO.Compression;
 
 namespace LibreriaGenericos
 {
-    class Llaves
+  public  class Llaves
     {
-        public void GeneracionLlaves(int p, int q)
+        static string RutaPublico;
+        static string RutaPrivada;
+        public Llaves(string Privada,string Publica)
+        {
+            RutaPublico = Privada;
+            RutaPrivada = Publica;
+        }
+        public void GeneracionLlaves(int p, int q, string RutaZip)
         {
             //encontrar n
             int n = p * q;
@@ -49,8 +56,7 @@ namespace LibreriaGenericos
             int d = Arreglo2[1];
 
             //impresion en text files
-            string RutaPublico = "";
-            string RutaPrivada = "";
+           
             string LlavePublica = Convert.ToString(e) + "," + Convert.ToString(n);
             string LlavePrivada = Convert.ToString(d) + "," + Convert.ToString(n);
 
@@ -58,8 +64,6 @@ namespace LibreriaGenericos
             File.WriteAllText(RutaPrivada, LlavePrivada);
 
             //subir a zip las llaves
-            string RutaZip = "";
-
             using (var archive = ZipFile.Open(RutaZip, ZipArchiveMode.Create))
             {
                 archive.CreateEntryFromFile(RutaPublico, Path.GetFileName(RutaPublico));
