@@ -1,4 +1,4 @@
-## Laboratorio 05
+## Laboratorio 06
 
 
 Jose Giron 1109419
